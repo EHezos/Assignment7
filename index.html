@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #ff0000;
+        }
+
+        #form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+
+        #result-container {
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+    <h1>Welcome to the KIT</h1>
+    <div id="form-container" ng-app="myApp" ng-controller="myCtrl">
+        <label>Full Name:</label>
+        <input type="text" ng-model="name">
+
+        <label>Age:</label>
+        <input type="text" ng-model="age">
+
+        <label>Date of Birth:</label>
+        <input type="date" ng-model="DOB">
+
+        <form ng-app="myApp" name="emailForm">
+            <label>Email:</label>
+            <input type="email" name="myAddress" ng-model="email">
+            <span class="error-message" ng-show="emailForm.myAddress.$error.email">Not a valid e-mail address</span>
+        </form>
+
+        <label>Major:</label>
+        <input type="text" ng-model="major">
+
+        <label>Phone Number:</label>
+        <input type="tel" ng-model="tel">
+
+        <div id="result-container">
+            <h2>Result: </h2>
+            Full Name: {{name}}<br>
+            Age: {{age}}<br>
+            Date of Birth: {{DOB}}<br>
+            Email: {{email}}<br>
+            Major: {{major}}<br>
+            Phone Number: {{tel}}<br>
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.name = "King";
+            $scope.age = 18;
+            $scope.email = "example@gmail.com";
+            $scope.major = "Software Engineer";
+            $scope.tel = "012 345 678";
+        });
+    </script>
+
+    <h2 style="text-align: center; margin-top: 20px;">Thank you for Choosing our School!!</h2>
+</body>
+
+</html>
